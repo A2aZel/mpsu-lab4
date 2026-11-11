@@ -1,5 +1,8 @@
 # Как запускать лабы (Vivado) и доп. задание
 
+Для запуска ЛР4 в Windows используйте [инструкцию в README](README.md).
+Ниже также сохранены примеры для учебного Linux-сервера и остальных лабораторных.
+
 Плата: **Nexys A7-100T**, FPGA-чип **xc7a100tcsg324-1**.
 Скрипты `build_sim.tcl` сами создают проект, добавляют файлы, ставят top-тестбенч
 и запускают поведенческую симуляцию. Перед выходом из ПЛИС симуляцию можно гонять
@@ -54,7 +57,9 @@ Tcl Console — `source $wave_script`, **Run For 100 ns → Run All → Zoom Fit
 После **Close Simulation** откройте **RTL Analysis → Open Elaborated Design →
 dut: CYBERcobra → Schematic**. Пошаговое объяснение — в
 [Lab4_CYBERcobra/walkthrough/README.md](Lab4_CYBERcobra/walkthrough/README.md).
-GUI-сеанс с помощниками пока не проверен; TB прошёл 43 локальные проверки Icarus.
+В том же TB можно менять `sw`: ожидаемый результат и число шагов определяются
+автоматически. После сохранения нажмите **Relaunch Simulation**. Обновление
+проверено в Icarus на 24 входах; новая версия в Vivado/XSim здесь не запускалась.
 
 Полный тест ЛР4 запускайте в **отдельном терминале**, из `Lab4_CYBERcobra`:
 
@@ -73,7 +78,7 @@ vivado -mode batch -nojournal -nolog -source build_sim.tcl -tclargs default exha
 | Lab1_Adder | `lab_01_tb_fulladder32` | завершился без ошибок |
 | Lab2_ALU | `lab_02_tb_alu` | `Number of errors: 0` |
 | Lab3_Memory | `lab_03_tb_register_file` | `Number of errors: 0` (и `err_count = 0`) |
-| Lab4_CYBERcobra | GUI: `tb_lab4_demo`; полный тест: `tb_lab4_selfcheck` | GUI: `DEMO_PASS`, 43 проверки; batch: `LAB4_SELF_CHECK=PASS`, `test_pass=1` |
+| Lab4_CYBERcobra | GUI: `tb_lab4_demo`; полный тест: `tb_lab4_selfcheck` | GUI: `DEMO_PASS`, `test_pass=1` (для `03B8` — 43 проверки); batch: `LAB4_SELF_CHECK=PASS`, `test_pass=1` |
 | Lab5_Decoder | `lab_05_tb_decoder` | `Number of errors: 0` |
 | Lab6_Processor | `lab_11_tb_processor_system` | `$finish` на строке 45 («The test is over»), НЕ watchdog. У DUT нет выходов — пустая волна (только clk/rst) это норма |
 | Lab7_Peripherals | `lab_13_tb_processor_system` | отработал все 4 ms; на волне `led_o` меняется вслед за `sw_i` |

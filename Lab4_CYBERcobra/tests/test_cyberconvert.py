@@ -67,9 +67,9 @@ class ConverterTests(unittest.TestCase):
         self.assertEqual(len(self.convert(("0" * 32 + "\n") * 128)), 128)
         self.assert_rejected_without_overwrite(("0" * 32 + "\n") * 129)
 
-    def test_both_supplied_programs_reproduce_checked_in_images(self):
+    def test_supplied_programs_reproduce_checked_in_images(self):
         project = Path(__file__).resolve().parents[1]
-        for source_name, image_name in (("program_var12.txt", "program.mem"), ("program_low16.txt", "program_low16.mem")):
+        for source_name, image_name in (("program_var12.txt", "program.mem"), ("program_low16.txt", "program_low16.mem"), ("program_operations.txt", "program_operations.mem")):
             with self.subTest(source=source_name):
                 words = converter.convert(project / source_name, self.output)
                 self.assertEqual("\n".join(words) + "\n", (project / image_name).read_text(encoding="ascii"))

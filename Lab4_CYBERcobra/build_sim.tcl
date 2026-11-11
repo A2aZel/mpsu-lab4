@@ -5,7 +5,7 @@ set program_mode default
 set coverage_mode directed
 if {$argc > 0} { set program_mode [lindex $argv 0] }
 if {$argc > 1} { set coverage_mode [lindex $argv 1] }
-if {$argc > 2 || $coverage_mode ni {directed exhaustive}} {
+if {$argc > 2 || $program_mode ni {default low16} || $coverage_mode ni {directed exhaustive}} {
     error "Usage: build_sim.tcl default|low16 directed|exhaustive"
 }
 set build_dir [lab4::prepare sim $program_mode]

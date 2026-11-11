@@ -3,7 +3,7 @@ set script_dir [file dirname [file normalize [info script]]]
 source [file join $script_dir lab4_common.tcl]
 set program_mode default
 if {$argc > 0} { set program_mode [lindex $argv 0] }
-if {$argc > 1} { error "Usage: build_bitstream.tcl default|low16" }
+if {$argc > 1} { error "Usage: build_bitstream.tcl default|low16|operations" }
 set build_dir [lab4::prepare bit $program_mode]
 set board_sv [file join $script_dir {board files} nexys_cybercobra.sv]
 set board_xdc [file join $script_dir {board files} nexys_a7_100t.xdc]

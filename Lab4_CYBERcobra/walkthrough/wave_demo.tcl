@@ -7,7 +7,8 @@ set demo_wave_sections [list \
     [list {1. Clock, reset and completed steps} [list \
         [list clk bin] [list rst bin] [list ordinary_step unsigned] [list test_pass bin]]] \
     [list {2. Instruction address and command} [list \
-        [list sw hex] [list pc hex] [list instr hex] [list pc_next hex]]] \
+        [list sw hex] [list selected_op hex] [list input_a unsigned] [list input_b unsigned] \
+        [list pc hex] [list instr hex] [list pc_next hex]]] \
     [list {3. Register operands and ALU} [list \
         [list RA1 unsigned] [list RA2 unsigned] [list rd1 hex] [list rd2 hex] \
         [list alu_op bin] [list alu_result hex] [list alu_flag bin]]] \
